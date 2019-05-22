@@ -5,6 +5,8 @@
  */
 package suhendar.uas.desktop.pkg2019;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author PeTIK
@@ -32,9 +34,9 @@ public class login extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtusername = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtpassword = new javax.swing.JTextField();
         btnlogin = new javax.swing.JButton();
         btnexit = new javax.swing.JButton();
+        txtpassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,6 +53,11 @@ public class login extends javax.swing.JFrame {
 
         btnlogin.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btnlogin.setText("Login");
+        btnlogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnloginActionPerformed(evt);
+            }
+        });
 
         btnexit.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btnexit.setText("Exit");
@@ -66,15 +73,15 @@ public class login extends javax.swing.JFrame {
             panelloginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelloginLayout.createSequentialGroup()
                 .addGap(97, 97, 97)
-                .addGroup(panelloginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelloginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panelloginLayout.createSequentialGroup()
                         .addComponent(btnlogin)
                         .addGap(56, 56, 56)
                         .addComponent(btnexit))
-                    .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
                     .addComponent(jLabel1)
-                    .addComponent(txtusername, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtusername)
+                    .addComponent(jLabel3)
+                    .addComponent(txtpassword, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE))
                 .addContainerGap(240, Short.MAX_VALUE))
             .addGroup(panelloginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelloginLayout.createSequentialGroup()
@@ -89,15 +96,15 @@ public class login extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtusername, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(42, 42, 42)
                 .addGroup(panelloginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnlogin)
                     .addComponent(btnexit))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
             .addGroup(panelloginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelloginLayout.createSequentialGroup()
                     .addGap(71, 71, 71)
@@ -128,6 +135,23 @@ public class login extends javax.swing.JFrame {
     private void btnexitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnexitActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnexitActionPerformed
+
+    private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
+        // TODO add your handling code here:
+        if(txtusername.getText().equals("admin"))
+        {
+            if(txtpassword.getText().equals("admin"))
+            {
+                   this.dispose();
+                   new Homepage().setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(null,"Password salah","Error", JOptionPane.ERROR_MESSAGE);
+                txtpassword.setText("");
+                txtpassword.requestFocus();
+            }
+        }
+        
+    }//GEN-LAST:event_btnloginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,7 +195,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel panellogin;
-    private javax.swing.JTextField txtpassword;
+    private javax.swing.JPasswordField txtpassword;
     private javax.swing.JTextField txtusername;
     // End of variables declaration//GEN-END:variables
 }
